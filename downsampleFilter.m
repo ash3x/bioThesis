@@ -16,7 +16,7 @@ function sigFiltered = downsampleFilter(signal)
     % This weighting factor is use because it is critical that the magnitude 
     % in the stopband is flat and close to zero.
     
-    fir = firls(8,[0 0.4 0.5 1],[1 1 0 0],[1 100]);
+    fir = firls(8,[0 0.35 0.45 1],[1 1 0 0],[1 100]);
     sigFiltered = filter(fir, 1, sigDecimated);
     
     % Take the derivative of the signal
@@ -26,12 +26,12 @@ function sigFiltered = downsampleFilter(signal)
 %     t = linspace(0,length(signal)/100,length(signal));
 %     plot(t, signal);
 %     axis([2580, 2600, -inf, +inf]);
-%     title('Input Signal');
+%     title('Input Abdominal Signal');
 %     xlabel('Time - seconds');
 %     subplot(212);
 %     tFilt = linspace(0,length(sigFiltered)/4,length(sigFiltered));
 %     plot(tFilt, sigFiltered);
 %     axis([2580, 2600, -inf, +inf]);
-%     title('Output Signal Lowpass filtered and downsampled by 25');
+%     title('Output Lowpass filtered and downsampled by 25');
 %     xlabel('Time - seconds');
 end

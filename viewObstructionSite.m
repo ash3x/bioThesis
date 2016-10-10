@@ -46,19 +46,27 @@ function viewObstructionSite(sigNum)
     end
     
     t = linspace(0,length(abdoFiltered)/Fs,length(abdoFiltered));
-    plot(t, event);
+%     plot(t, event);
     obstrIndex = 1;
     f = figure;
     while 1
         plot(t, abdoFiltered);
-        axis([startIndex(obstrIndex)/Fs,...
-            endIndex(obstrIndex)/Fs, -inf, +inf]);
         hold on
         plot(t, thoraxFiltered);
-        title('Abdominal Signal vs Thorax Signal');
+        % Specify start and endpoints of obstruction
+        line([(startIndex(obstrIndex)/Fs + 120)...
+            (startIndex(obstrIndex)/Fs + 120)], get(gca, 'ylim'), ...
+            'Color', 'g');
+        line([(endIndex(obstrIndex)/Fs - 120)...
+            (endIndex(obstrIndex)/Fs - 120)], get(gca, 'ylim'), ...
+            'Color', 'g');
+        axis([startIndex(obstrIndex)/Fs,...
+            endIndex(obstrIndex)/Fs, -inf, +inf]);
+        title(['Abdominal Signal vs Thorax Signal - obstruction ', ...
+            int2str(obstrIndex)]);
         xlabel('Time - seconds');
-        hold off
         
+        hold off
         legend('abdominal band', 'thoracic band')
         
         while 1
