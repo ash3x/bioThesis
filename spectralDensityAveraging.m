@@ -17,7 +17,7 @@ for signalIndex = 1:length(vectorLengths)
         dataSegment = abdo(((i-1)*180000 + 1):(i*180000));
         freq = 0:Fs/length(dataSegment):Fs/2;
         dB = powerSpectralDensity(dataSegment, Fs);
-        threshold = mean(dB)/3;
+        threshold = mean(dB)/3.5;
         % Find the frequencies whose power spectral estimates are higher than 
         % 33 dB in attenuation - agreed attenuation difference
         importantFreq = [];
@@ -40,7 +40,7 @@ for signalIndex = 1:length(vectorLengths)
     dataSegment = abdo((i*180000 + 1):length(abdo));
     freq = 0:Fs/length(dataSegment):Fs/2;
     dB = powerSpectralDensity(dataSegment, Fs);
-    threshold = mean(dB)/3;
+    threshold = mean(dB)/3.5;
     % Find the frequencies whose power spectral estimates are higher than 
     % 35 dB in attenuation
     importantFreq = [];

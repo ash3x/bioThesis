@@ -1,4 +1,4 @@
-t = linspace(0, 60, 6000);
+    t = linspace(0, 60, 6000);
 
 %% Generate Ribcage and abdominal Signals
 a1 = 1;
